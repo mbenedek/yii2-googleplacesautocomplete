@@ -12,8 +12,6 @@ class GooglePlacesAutoComplete extends InputWidget {
 
 	public $libraries = 'places';
 
-	public $sensor = true;
-
 	public $language = 'en-US';
 
 	public $apiKey = null;
@@ -42,7 +40,6 @@ class GooglePlacesAutoComplete extends InputWidget {
 		$view = $this->getView();
 		$view->registerJsFile(self::API_URL . http_build_query([
 				'libraries' => $this->libraries,
-				'sensor' => $this->sensor ? 'true' : 'false',
 				'language' => $this->language,
 				'key' => $this->apiKey,
 			]));
