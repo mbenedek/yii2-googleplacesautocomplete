@@ -47,8 +47,10 @@ class GooglePlacesAutoComplete extends InputWidget {
 (function(){
     var input = document.getElementById('{$elementId}');
     var options = {$scriptOptions};
-
-    new google.maps.places.Autocomplete(input, options);
+	var ac = new google.maps.places.Autocomplete(input, options);
+    ac.addListener('place_changed', function(){
+        document.dispatchEvent(new CustomEvent('google_maps_ac_place_changed', {detail: ac.getPlace()}));
+    });
 })();
 JS
 		, \yii\web\View::POS_READY);
